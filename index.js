@@ -1,4 +1,19 @@
+import { handleAsNodeRequest } from 'cloudflare:node';
+import { createServer } from 'node:http';
+
+// Create a traditional Node.js HTTP server
+const server = createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello from Node.js HTTP server!');
+});
+
+// Register the server (doesn't actually bind to a port in the traditional sense)
+server.listen(8080); // The port number is a convention for handleAsNodeRequest
+
 /* eslint-disable camelcase */
+export default {
+
+
 const express = require("express");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
@@ -225,4 +240,4 @@ app.use((_, res) => {
   res.status(404).json({ error: "Route doesn't exist." });
 });
 
-app.listen(port, () => console.log("Server running on port " + port));
+}
